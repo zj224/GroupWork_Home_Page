@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M&AE 3260 &mdash; GroupWork Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0F1115;
+      --panel: #171A21;
+      --panel2: #1D212B;
+      --line: #282D3A;
+      --amber: #FFB454;
+      --cyan: #5EEAD4;
+      --rose: #FB7185;
+      --pink: #F472B6;
+      --fg: #E7E9EE;
+      --muted: #8B92A5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--ink);
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 28px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+
+    header h1 {
+      font-size: 15px;
+      margin: 0;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    header h1 span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    h2.page-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      color: var(--amber);
+      margin: 0 0 6px 0;
+    }
+
+    p.subtitle {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin: 0 0 32px 0;
+      line-height: 1.6;
+    }
+
+    p.section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin: 32px 0 12px 0;
+    }
+
+    p.section-label:first-of-type {
+      margin-top: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+
+    a.card {
+      display: block;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px 18px 16px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    a.card:hover {
+      border-color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    .card-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--amber);
+      margin: 0 0 4px 0;
+    }
+
+    .card-name {
+      font-size: 13px;
+      color: var(--fg);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="dot"></div>
+    <h1>M&amp;AE 3260 <span>&mdash; GroupWork Tools</span></h1>
+  </header>
+
+  <main>
+    <h2 class="page-title">GroupWork Simulators</h2>
+    <p class="subtitle">Interactive self-check tools for each week&rsquo;s GroupWork assignment. Click a card to open
+      that week&rsquo;s tool.</p>
+
+    <p class="section-label">GROUPWORKS</p>
+    <div class="grid" id="grid-gw"></div>
+
+    <p class="section-label">OTHER TOOLS</p>
+    <div class="grid" id="grid-tools"></div>
+  </main>
+
+  <footer>M&amp;AE 3260 &mdash; Systems Dynamics &amp; Controls</footer>
+
+  <script>
+    const GROUPWORKS = [
+      { id: "gw1f", label: "GroupWork 1 F", name: "Exploring 1st Order Systems: RC Circuit Voltage" },
+      { id: "gw2w", label: "GroupWork 2 W", name: "Closed-Loop System Design: Rotational Systems" },
+      { id: "gw3f", label: "GroupWork 3 F", name: "Second-Order Free Response: Mass-Spring-Damper" },
+      { id: "gw4w", label: "GroupWork 4 W", name: "Laplace Transform" },
+      { id: "gw4f", label: "GroupWork 4 F", name: "Step Response and the s-Plane" },
+      { id: "gw5w", label: "GroupWork 5 W", name: "Lab 2 Prep: Logarithmic Decrement" },
+      { id: "gw5f", label: "GroupWork 5 F", name: "Frequency Response" },
+    ];
+    const TOOLS = [
+      { id: "gwtools", label: "GroupWork Tools", name: "Bode Plot Generator" },
+    ];
+
+    function renderCards(list, hostId) {
+      const host = document.getElementById(hostId);
+      host.innerHTML = list.map(item => `
+      <a class="card" href="https://${item.id}.netlify.app" target="_blank" rel="noopener">
+        <p class="card-id">${item.label}</p>
+        <p class="card-name">${item.name}</p>
+      </a>
+    `).join("");
+    }
+
+    renderCards(GROUPWORKS, "grid-gw");
+    renderCards(TOOLS, "grid-tools");
+  </script>
+
+</body>
+
+</html>
