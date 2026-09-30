@@ -2,7 +2,9 @@
 
 Browser-based versions of the weekly MATLAB group assignments for **M&AE 3260: System Dynamics & Controls** at Cornell University.
 
-This repo is the **home page**: a landing page with a card for each week's assignment. Each assignment is a single, self-contained web page in its own repo (listed below). Students open a link and work through the problems. There's nothing to install, no MATLAB license to set up, and no difference between Windows, macOS or ChromeOS.
+**Live site: [gwhome.netlify.app](https://gwhome.netlify.app)**
+
+This repo is the **home page**: a landing page with a card for each week's assignment. Each assignment is a single, self-contained web page. Students open a link and work through the problems. There's nothing to install, no MATLAB license to set up, and no difference between Windows, macOS or ChromeOS.
 
 ## Why
 
@@ -18,18 +20,6 @@ Rebuilding each assignment as a web page removed both problems: it runs instantl
 - Used by **200+ students** in M&AE 3260.
 - **99%** of students preferred the WebApp versions to MATLAB.
 - The instructor **fully retired the MATLAB versions** in favor of these.
-
-## Assignments
-
-| Assignment | What students do | Repo |
-|---|---|---|
-| **5W: Lab 2 Prep, Logarithmic Decrement** | Derive the log decrement for N > 1 periods, implement it, fit it to real lab data, and explore how sensitive the estimate is to ±50% errors. | [GroupWork_5W_Lab2Prep_LogDec](https://github.com/mae3260/GroupWork_5W_Lab2Prep_LogDec) |
-| **5F: Frequency Response** | Read amplitude ratio and phase off Bode plots, turn them into x(t), go from time histories back to frequency response, and overlay Bode plots for different damping. Includes an animated spring-mass-damper. | [GroupWork_5F_Frequency_Response](https://github.com/mae3260/GroupWork_5F_Frequency_Response) |
-| **6W: Bode Plot Generator** | Build a transfer function from zeros, poles and gain, and see its Bode plot update. | [WebApp_GW_Learning_Tools](https://github.com/mae3260/WebApp_GW_Learning_Tools) |
-| **6F: Passive Suspension Design** | Derive transfer functions for a quarter-car suspension, pick a damping value that satisfies position, acceleration and shock-travel specs on a Bode plot, then check the design with bumpy-road and speed-bump simulations. | [Groupwork_6F_Suspension_Design](https://github.com/mae3260/Groupwork_6F_Suspension_Design) |
-| **7F: Advanced State Space (Loudspeaker)** | Build the A, B, C, D matrices for a loudspeaker, view the MIMO Bode plots, and **listen** to raw vs. filtered audio while tuning a noise filter. | [Groupwork_7F_Advanced_State_Space](https://github.com/mae3260/Groupwork_7F_Advanced_State_Space) |
-
-The live version of every assignment is linked from the home page.
 
 ## Features
 
@@ -54,10 +44,6 @@ Plain HTML, CSS and JavaScript. There's no framework and no build step, and each
 | [jsPDF](https://github.com/parallax/jsPDF) and [pdf-lib](https://pdf-lib.js.org/) | Generating and merging the submission PDF |
 
 All libraries load from a CDN. Each page is deployed on its own as a static site on Netlify.
-
-## Running locally
-
-Open `index.html` in a browser. That's it. The same works for any of the assignment repos.
 
 ## Author
 
